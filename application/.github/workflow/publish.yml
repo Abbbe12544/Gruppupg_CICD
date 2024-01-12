@@ -27,4 +27,4 @@ jobs:
           dotnet build
 
       - name: Build docker image
-        run: docker build -t 1sakp/Docker-test-Main .
+        run: docker build -t 1sakp/Gruppupg_CICD .
