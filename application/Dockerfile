@@ -4,3 +4,4 @@ WORKDIR /application
 
 COPY ./bin/Debug/net8.0/ .
 
+CMD ["dotnet", "application.dll"]
