@@ -28,5 +28,5 @@ jobs:
           
     - name: Build and push docker image
       run: |  
-        docker build -f 1skp/gruppupg_cicd .
-        docker push 1skp/gruppupg_cicd
+        docker build -f 1skp/gruppupg-cicd .
+        docker push 1skp/gruppupg-cicd
