@@ -3,30 +3,44 @@ name: Publish Docker image
 on:
   push:
     branches:
-    - '**'
+    - '*'
+  pull_request:
+    branches: 
+    - main
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       
     - name: Checkout respository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
             
     - name: Set up .net
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: '6.x'
-          
+
+    - name: Restore dependencies 
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+    
+    - name: Test
+      run: dotnet test --configuration Release --no-restore
     - name: Restore and build
       run: |
         dotnet restore
         dotnet build
+
+
+##    - name: Login to dockerhub
+##      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           
-    - name: Login to dockerhub
-      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          
-    - name: Build and push docker image
-      run: |  
-        docker build -f adamohlson1/gruppuppgift .
-        docker push adamohlson1/gruppuppgift
+##    - name: Build and push docker image
+##      run: |  
+##        docker build -f adamohlson1/gruppuppgift .
+##        docker push adamohlson1/ 
