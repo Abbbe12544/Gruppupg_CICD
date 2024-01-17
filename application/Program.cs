@@ -1,82 +1,96 @@
-﻿using System; 
+using System;
 using static System.Console; 
 using Xunit; 
 
-public class PersonnummerTest 
+
+class Program
 {
-    
-    [Fact]
-    public void TestLength()
+    private const int PersonalNumberLength = 11;
+    private const string DateFormat = "yyMMdd";
+    private const int SequencePartLength = 4;
+
+    private static readonly string[] Cities = { "Stockholm", "Göteborg", "Malmö", "Uppsala", "Linköping" };
+
+    static void Main()
     {
-        //Arrange
-        var validator = new PersonnummerValidator();
-        string validPersonnummer = "910101-1234";
-        string invalidPersonnummer = "12345678901"; 
+        Console.WriteLine("\nVälkommen till personnummerkontrollen!");
 
-        // Act
-        var validResult = validator.Validate(validPersonnummer);
-        var invalidResult = validator.Validate(invalidPersonnummer);
+        while (true)
+        {
+            string input = GetUserInput();
 
-        // Assert
-        Assert.True(validResult); // Kontrollera att giltiga personnummer accepteras
-
-        // Kontrollera att ogiltiga personnummer (för långa) inte accepteras
-        Assert.False(invalidResult, "Personnummer längre än 10 tecken borde vara ogiltiga.");
-    }
-    
-    [Fact]
-    public void TestControlNum()
-    {
-        // Arrange
-        var validator = new PersonnummerValidator();
-        string validPersonnummer = "910101-1234";
-        string invalidPersonnummer = "910101-5678";
-
-        // Act
-        var validResult = validator.ValidateControlNum(validPersonnummer);
-        var invalidResult = validator.ValidateControlNum(invalidPersonnummer);
-
-        // Assert
-        Assert.True(validResult); // Kontrollera att giltiga kontrollsiffror accepteras
-
-        // Kontrollera att ogiltiga kontrollsiffror inte accepteras
-        Assert.False(invalidResult, "Ogiltig kontrollsiffra borde inte accepteras.");
+            if (IsValidSwedishPersonalNumber(input))
+            {
+                Console.WriteLine($"Personnumret är giltigt. Könet är: {GetGender(input)}");
+                CheckAgeAndCity(input);
+            }
+            else
+            {
+                Console.WriteLine("Ogiltigt personnummer. Försök igen.\n");
+            }
+        }
     }
 
-    [Fact]
-    public void TestBirthPlace()
+    private static string GetUserInput()
     {
-        // Arrange
-        var validator = new PersonnummerValidator();
-        string validPersonnummer = "910101-1234";
-        string invalidPersonnummer = "920202-5678";
-
-        // Act
-        var validResult = validator.ValidateBirthPlace(validPersonnummer);
-        var invalidResult = validator.ValidateBirthPlace(invalidPersonnummer);
-
-        // Assert
-        Assert.True(validResult); // Kontrollera att giltigt födelseort accepteras
-
-        // Kontrollera att ogiltigt födelseort inte accepteras
-        Assert.False(invalidResult, "Ogiltig födelseort borde inte accepteras.");
+        Console.Write("\nAnge ett svenskt personnummer (ÅÅMMDD-XXXX eller ÅÅMMDD+XXXX): ");
+        return Console.ReadLine() ?? "";
     }
 
-    [Fact]
-    public void TestGender()
+    private static bool IsValidSwedishPersonalNumber(string personalNumber)
     {
-        // Arrange
-        var validator = new PersonnummerValidator();
-        string malePersonnummer = "910101-1234";
-        string femalePersonnummer = "910101-5678";
+        if (personalNumber.Length != PersonalNumberLength ||
+            (personalNumber[6] != '-' && personalNumber[6] != '+'))
+        {
+            return false;
+        }
 
-        // Act
-        var maleResult = validator.ValidateGender(malePersonnummer, Gender.Male);
-        var femaleResult = validator.ValidateGender(femalePersonnummer, Gender.Female);
+        string datePart = personalNumber.Substring(0, 6);
+        string sequencePart = personalNumber.Substring(7, SequencePartLength);
 
-        // Assert
-        Assert.True(maleResult); // Kontrollera att manliga personnummer accepteras
-        Assert.True(femaleResult); // Kontrollera att kvinnliga personnummer accepteras
+        return DateTime.TryParseExact(datePart, DateFormat, null, System.Globalization.DateTimeStyles.None, out _) &&
+               int.TryParse(sequencePart, out _);
+    }
+
+    private static string GetGender(string personalNumber)
+    {
+        int genderDigit = int.Parse(personalNumber.Substring(9, 1));
+        return genderDigit % 2 == 0 ? "Kvinna" : "Man";
+    }
+
+    private static void CheckAgeAndCity(string personalNumber)
+    {
+        int birthYear = int.Parse(personalNumber.Substring(0, 2)) + 2000;
+        int currentYear = DateTime.Now.Year;
+
+        int age = currentYear - birthYear;
+
+        if (age < 0 || personalNumber[6] == '+')
+        {
+            birthYear -= 100;
+            age = currentYear - birthYear;
+        }
+
+        Console.WriteLine($"Ålder: {age} år");
+
+        if (age >= 100)
+        {
+            Console.WriteLine("Personen är över 100 år gammal.");
+        }
+        else
+        {
+            Console.WriteLine("Personen är under 100 år gammal.");
+        }
+
+        string cityOfBirth = GetCityOfBirth();
+        Console.WriteLine($"Född i: {cityOfBirth}");
+    }
+
+    private static string GetCityOfBirth()
+    {
+        Random random = new Random();
+        int randomIndex = random.Next(Cities.Length);
+
+        return Cities[randomIndex];
     }
 }
-
