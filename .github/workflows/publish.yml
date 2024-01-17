@@ -30,10 +30,8 @@ jobs:
     
     - name: Test
       run: dotnet test --configuration Release --no-restore
-    - name: Restore and build
-      run: |
-        dotnet restore
-        dotnet build
+    
+
 
 
 ##    - name: Login to dockerhub
