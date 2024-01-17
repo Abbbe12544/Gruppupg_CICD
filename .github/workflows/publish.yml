@@ -17,6 +17,7 @@ jobs:
       
     - name: Checkout respository
 <<<<<<< HEAD
+<<<<<<< HEAD
       uses: actions/checkout@v2
             
     - name: Set up .net
@@ -48,3 +49,6 @@ jobs:
 ##      run: |  
 ##        docker build -f adamohlson1/gruppuppgift .
 ##        docker push adamohlson1/ 
+=======
+      uses: actions/checkout@v3
+>>>>>>> 03b4285a61683fe00d5e79cdfd2389a6b6e3b2c7
