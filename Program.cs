@@ -8,11 +8,11 @@ namespace application
     {
 
     
-        private const int PersonalNumberLength = 11;
-        private const string DateFormat = "yyMMdd";
-        private const int SequencePartLength = 4;
+        public const int PersonalNumberLength = 11;
+        public const string DateFormat = "yyMMdd";
+        public const int SequencePartLength = 4;
 
-        private static readonly string[] Cities = { "Stockholm", "Göteborg", "Malmö", "Uppsala", "Linköping" };
+        public static readonly string[] Cities = { "Stockholm", "Göteborg", "Malmö", "Uppsala", "Linköping" };
 
         static void Main()
         {
@@ -34,13 +34,13 @@ namespace application
             }
         }
 
-        private static string GetUserInput()
+        public static string GetUserInput()
         {
             Console.Write("\nAnge ett svenskt personnummer (ÅÅMMDD-XXXX eller ÅÅMMDD+XXXX): ");
             return Console.ReadLine() ?? "";
         }
 
-        private static bool IsValidSwedishPersonalNumber(string personalNumber)
+        public static bool IsValidSwedishPersonalNumber(string personalNumber)
         {
             if (personalNumber.Length != PersonalNumberLength ||
                 (personalNumber[6] != '-' && personalNumber[6] != '+'))
@@ -55,13 +55,13 @@ namespace application
                 int.TryParse(sequencePart, out _);
         }
 
-        private static string GetGender(string personalNumber)
+        public static string GetGender(string personalNumber)
         {
             int genderDigit = int.Parse(personalNumber.Substring(9, 1));
             return genderDigit % 2 == 0 ? "Kvinna" : "Man";
         }
 
-        private static void CheckAgeAndCity(string personalNumber)
+        public static void CheckAgeAndCity(string personalNumber)
         {
             int birthYear = int.Parse(personalNumber.Substring(0, 2)) + 2000;
             int currentYear = DateTime.Now.Year;
@@ -89,7 +89,7 @@ namespace application
             Console.WriteLine($"Född i: {cityOfBirth}");
         }
 
-        private static string GetCityOfBirth()
+        public static string GetCityOfBirth()
         {
             Random random = new Random();
             int randomIndex = random.Next(Cities.Length);
