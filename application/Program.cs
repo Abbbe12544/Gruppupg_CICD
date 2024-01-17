@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using static System.Console; 
 using Xunit; 
 
 
-class Program
+public class Program
 {
     private const int PersonalNumberLength = 11;
     private const string DateFormat = "yyMMdd";
