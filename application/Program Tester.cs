@@ -9,7 +9,7 @@ public class PersonnummerTest
     public void TestLength()
     {
         //Arrange
-        var validator = new IsValidSwedishPersonalNumber();
+        var validator = new Program.IsValidSwedishPersonalNumber();
         string validPersonnummer = "910101-1234";
         string invalidPersonnummer = "12345678901"; 
 
@@ -28,7 +28,7 @@ public class PersonnummerTest
     public void TestControlNum()
     {
         // Arrange
-        var validator = new IsValidSwedishPersonalNumber();
+        var validator = new Program.IsValidSwedishPersonalNumber();
         string validPersonnummer = "910101-1234";
         string invalidPersonnummer = "910101-5678";
 
@@ -47,7 +47,7 @@ public class PersonnummerTest
     public void TestBirthPlace()
     {
         // Arrange
-        var validator = new IsValidSwedishPersonalNumber();
+        var validator = new Program.IsValidSwedishPersonalNumber();
         string validPersonnummer = "910101-1234";
         string invalidPersonnummer = "920202-5678";
 
@@ -66,7 +66,7 @@ public class PersonnummerTest
     public void TestGender()
     {
         // Arrange
-        var validator = new IsValidSwedishPersonalNumber();
+        var validator = new Program.IsValidSwedishPersonalNumber();
         string malePersonnummer = "910101-1234";
         string femalePersonnummer = "910101-5678";
 
