@@ -13,7 +13,7 @@ namespace application
         public void TestLength()
         {
             //Arrange
-            var validator = new Program.Program;
+            var validator = new Program.IsValidSwedishPersonalNumber("050405-1419");
             string validPersonnummer = "910101-1234";
             string invalidPersonnummer = "12345678901"; 
 
