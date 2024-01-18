@@ -60,13 +60,6 @@
             }
         }
 
-        /*public static string GetCityOfBirth()
-        {
-            Random random = new Random();
-            int randomIndex = random.Next(Cities.Length);
-
-            return Cities[randomIndex];
-        }*/
     }
 
 }
