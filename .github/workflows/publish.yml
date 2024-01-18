@@ -35,5 +35,5 @@ jobs:
           
     - name: Build and push docker image
       run: |  
-        docker build -f adamohlson1/gruppuppgift .
-        docker push adamohlson1/ 
+        docker build -f ${{ secrets.DOCKERHUB_USERNAME }}/gruppuppgift .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/ 
