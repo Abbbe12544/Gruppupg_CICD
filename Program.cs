@@ -37,7 +37,7 @@
             return genderDigit % 2 == 0 ? "Kvinna" : "Man";
         }
 
-        public static int§ CheckAge(string personnummer)
+        public static int CheckAge(string personnummer)
         {
             int birthYear = int.Parse(personnummer.Substring(0, 2)) + 2000;
             int currentYear = DateTime.Now.Year;
