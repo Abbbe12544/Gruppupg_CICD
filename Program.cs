@@ -19,8 +19,6 @@
         public const string DateFormat = "yyMMdd";
         public const int SequencePartLength = 4;
 
-        public static readonly string[] Cities = { "Stockholm", "Göteborg", "Malmö", "Uppsala", "Linköping" };
-
         public static string GetUserInput()
         {
             Console.Write("\nAnge ett svenskt personnummer (ÅÅMMDD-XXXX eller ÅÅMMDD+XXXX): ");

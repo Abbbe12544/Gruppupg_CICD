@@ -26,9 +26,12 @@ Sammanfattningsvis var detta projekt en möjlighet att utforska och tillämpa ko
 
 Applikationen:                                                                                                                                                                                                  
 Först definierar vi några grundläggande konstanter för att hantera svenska personnummer. Detta inkluderar Personnumer lenght, som är satt till 11 för att matcha den vanliga längden på ett svenskt personnummer. 
-Vi definierar också Date Format som 'ååMMdd', vilket är formatet på datumdelen i ett svenskt personnummer. Dessutom skapar vi en konstant SEQUENCE PART LENGTH satt till 4 för sekvensdelen av personnumret. Till sist har vi en lista över svenska städer, Cities, som innehåller namn som Stockholm, Göteborg, Malmö, Uppsala och Linköping.
+Vi definierar också Date Format som 'ååMMdd', vilket är formatet på datumdelen i ett svenskt personnummer. Dessutom skapar vi en konstant SEQUENCE PART LENGTH satt till 4 för sekvensdelen av personnumret.
+
 För att samla in ett personnummer från användaren använder vi funktionen GetUserInput(). Denna funktion frågar användaren att mata in sitt personnummer och returnerar det som en sträng. Om användaren inte matar in något och trycker på enter, returnerar funktionen en tom sträng.
 
 Nästa steg är att kontrollera om ett personnummer är giltigt med funktionen IsValidSwedishPersonnummer(). Denna funktion kontrollerar först att personnumrets längd är korrekt. Sedan använder den ett reguljärt uttryck för att säkerställa att formatet är korrekt, inklusive att kontrollera förekomsten av ett '-' eller '+'. Funktionen kontrollerar också att datumdelen är ett giltigt datum och att de sista fyra tecknen är numeriska.
+
 För att bestämma kön baserat på personnumret har vi funktionen GetGender(). Den ser till den näst sista siffran i personnumret, där udda nummer indikerar en man och jämna en kvinna.
+
 Slutligen har vi CheckAge() som beräknar en persons ålder från deras personnummer. Funktionen extraherar först födelseåret från personnumret. Sedan jämför den detta år med det aktuella året för att beräkna åldern. Funktionen tar också hänsyn till personer födda på 1900-talet och justerar åldersberäkningen för personer över 100 år.
