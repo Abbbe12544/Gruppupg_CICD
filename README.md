@@ -24,7 +24,7 @@ För att automatisera enhetstestningen och distributionen använde vi oss av Git
 Sammanfattningsvis var detta projekt en möjlighet att utforska och tillämpa koncept inom enhetstestning, Docker och CI/CD i ett verkligt scenario. Genom att ta små steg och iterera över programmet och dess tester lyckades vi nå vårt mål och skapa ett robust system för att hantera och analysera svenska personnummer. Sammarbeten inom gruppen har varit bra och med hjälp av en tydlig och kontinuerlig konversation lyckades vi med uppgiften och är alla nöjda med resultatet. 
 
 
-Applikationen
+Applikationen:
 Först definierar vi några grundläggande konstanter för att hantera svenska personnummer. Detta inkluderar Personnumer lenght, som är satt till 11 för att matcha den vanliga längden på ett svenskt personnummer. 
 Vi definierar också Date Format som 'ååMMdd', vilket är formatet på datumdelen i ett svenskt personnummer. Dessutom skapar vi en konstant SEQUENCE PART LENGTH satt till 4 för sekvensdelen av personnumret. Till sist har vi en lista över svenska städer, Cities, som innehåller namn som Stockholm, Göteborg, Malmö, Uppsala och Linköping.
 För att samla in ett personnummer från användaren använder vi funktionen GetUserInput(). Denna funktion frågar användaren att mata in sitt personnummer och returnerar det som en sträng. Om användaren inte matar in något och trycker på enter, returnerar funktionen en tom sträng.
