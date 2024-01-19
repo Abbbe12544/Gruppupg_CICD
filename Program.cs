@@ -3,6 +3,17 @@
     public class Program
     {
 
+        static void main()
+        {
+            string p_num = GetUserInput();
+            if (IsValidSwedishpersonnummer(p_num) == true)
+            {
+                Console.WriteLine("Valid peronnummer!");
+                Console.WriteLine(GetGender(p_num));
+                Console.WriteLine(CheckAge(p_num));
+            }
+            
+        }
     
         public const int personnummerLength = 11;
         public const string DateFormat = "yyMMdd";
