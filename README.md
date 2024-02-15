@@ -1,6 +1,6 @@
 Gruppuppgift CI/CD
 
-Vi arbetade med att utveckla och testa ett program för att verifiera och analysera svenska personnummer. Det svenska personnumret är komplicerat och involverar olika regler för att säkerställa dess giltighet. Målet var att skapa ett program som kunde genomföra olika typer av enhetstester för att validera personnummer enligt de svenska reglerna.
+Vi var engagerade i utvecklingen och testningen av en applikation för att verifiera och analysera svenska personnummer. Den svenska personnummerstandarden är komplicerad och omfattar flera regler för att säkerställa dess giltighet. Vårt huvudsyfte var att utveckla ett program som kunde utföra olika former av enhetstester för att säkerställa att personnummer följde de strikta svenska reglerna.
 
 EnhetsTester
 Test av Personnumrets Längd
